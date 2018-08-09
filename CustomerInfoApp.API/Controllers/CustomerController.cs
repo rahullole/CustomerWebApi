@@ -148,7 +148,7 @@ namespace CustomerInfoApp.API.Controllers
         [HttpDelete]
         [SwaggerResponse(HttpStatusCode.OK, Description = "Returns this status code if the request was successful")]
         [SwaggerResponse(HttpStatusCode.BadRequest, Description = "In case of invalid model data or if model validation fails")]
-        public HttpResponseMessage Delete([FromUri]long id, [FromUri]string userName = "")
+        public HttpResponseMessage Delete([FromUri]long id)
         {
             if (id == 0)
             {
