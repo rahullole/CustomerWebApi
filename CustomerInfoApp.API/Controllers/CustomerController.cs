@@ -97,7 +97,7 @@ namespace CustomerInfoApp.API.Controllers
 
             if (!validationResult.IsValid)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "This request is invalid, please review your request parameters.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "This request is invalid, please review your request parameters. Errors: " + string.Join(", ",validationResult.Errors));
             }
 
             Customer customer = CustomerMapper.Map(contract);
@@ -122,7 +122,7 @@ namespace CustomerInfoApp.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (contract.Id == 0)
+            if (contract.Id <= 0)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Please check, Id of the customer is missing");
             }
@@ -131,7 +131,7 @@ namespace CustomerInfoApp.API.Controllers
 
             if (!validationResult.IsValid)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "This request is invalid, please review your request parameters.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "This request is invalid, please review your request parameters. Errors: " + string.Join(", ", validationResult.Errors));
             }
 
             Customer customer = CustomerMapper.Map(contract);
